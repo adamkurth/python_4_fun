@@ -1,7 +1,1 @@
-[submodule "a-star-algorithm"]
-    path = a-star-algorithm
-    url = https://github.com/adamkurth/Python.git
 
-[submodule "reinforcement_snake_game"]
-    path = reinforcement_snake_game
-    url = https://github.com/adamkurth/Python.git
