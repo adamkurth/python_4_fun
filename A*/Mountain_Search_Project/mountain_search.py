@@ -254,6 +254,9 @@ def elevation_func_4(x, y):
 def elevation_func_5(x, y):
     return 1/50*(x**2 -3*x*(y**2))
 
+def elevation_func_6(x, y):
+    return 1/50*(x**2 - y**2)
+
 def traffic_func():
     return np.random.rand(num_nodes, num_nodes) * 10
 
@@ -262,8 +265,8 @@ def traffic_func():
 num_nodes = 15
 num_connections = 15
 
-# x_range = (-np.pi, np.pi)
-# y_range = (-np.pi, np.pi)
+x_range = (-np.pi, np.pi)
+y_range = (-np.pi, np.pi)
 
 # """Steep Elevation Function"""""
 # mountain_passage_1 = MountainPassage(elevation_funct=elevation_func_1, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
@@ -304,12 +307,12 @@ num_connections = 15
 # mountain_passage_2.plot_path_astar(path)
 
 # """Elevation Function 3"""
-# x_range = (-2, 2)
-# y_range = (-2, 2)
+x_range = (-2, 2)
+y_range = (-2, 2)
 
-# mountain_passage_3 = MountainPassage(elevation_funct=elevation_func_3, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
+mountain_passage_3 = MountainPassage(elevation_funct=elevation_func_3, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
 # print("Elevation Function with Sine and Cosine Interaction:")
-# mountain_passage_3.plot(show_meshgrid=True)
+mountain_passage_3.plot(show_meshgrid=True)
 # mountain_passage_3.plot(show_meshgrid=False)
 
 # traffic_df = pd.DataFrame(mountain_passage_3.traffic_weight_matrix)
@@ -325,12 +328,12 @@ num_connections = 15
 # mountain_passage_3.plot_path_astar(path)
 
 # """Elevation Function 4"""
-# x_range = (0, np.pi)
-# y_range = (0, np.pi)
+x_range = (0, np.pi)
+y_range = (0, np.pi)
 
-# mountain_passage_4 = MountainPassage(elevation_funct=elevation_func_4, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
+mountain_passage_4 = MountainPassage(elevation_funct=elevation_func_4, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
 # print("Elevation Function with Sine and Cosine Interaction:")
-# mountain_passage_4.plot(show_meshgrid=True)
+mountain_passage_4.plot(show_meshgrid=True)
 # mountain_passage_4.plot(show_meshgrid=False)
 
 # traffic_df = pd.DataFrame(mountain_passage_4.traffic_weight_matrix)
@@ -345,27 +348,49 @@ num_connections = 15
 # mountain_passage_4.plot_astar_optimization(start, goal)
 # mountain_passage_4.plot_path_astar(path)
 
-# """Elevation Function 4"""
+# """Monkey Saddle function 5"""
 
 x_range = (-2*np.pi, 2*np.pi)
 y_range = (-2*np.pi, 2*np.pi)
 
-mountain_passage_5 = MountainPassage(elevation_funct=elevation_func_4, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
+mountain_passage_5 = MountainPassage(elevation_funct=elevation_func_5, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
 print("Elevation Function with Sine and Cosine Interaction:")
 mountain_passage_5.plot(show_meshgrid=True)
-mountain_passage_5.plot(show_meshgrid=False)
+# mountain_passage_5.plot(show_meshgrid=False)
 
-traffic_df = pd.DataFrame(mountain_passage_5.traffic_weight_matrix)
+# traffic_df = pd.DataFrame(mountain_passage_5.traffic_weight_matrix)
+# print(traffic_df)
+
+# """A* Algorithm"""""
+
+# start, goal = mountain_passage_5.find_furthest_nodes()
+# print("Furthest Nodes: ", start, goal)
+# path = mountain_passage_5.astar(start, goal)
+# print("Path:", path)
+# mountain_passage_5.plot_astar_optimization(start, goal)
+# mountain_passage_5.plot_path_astar(path)
+
+"""Horse Saddle function 6"""
+
+x_range = (-2*np.pi, 2*np.pi)
+y_range = (-2*np.pi, 2*np.pi)
+
+mountain_passage_6 = MountainPassage(elevation_funct=elevation_func_6, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
+print("Elevation Function with Sine and Cosine Interaction:")
+mountain_passage_6.plot(show_meshgrid=True)
+mountain_passage_6.plot(show_meshgrid=False)
+
+traffic_df = pd.DataFrame(mountain_passage_6.traffic_weight_matrix)
 print(traffic_df)
 
 """A* Algorithm"""""
 
-start, goal = mountain_passage_5.find_furthest_nodes()
+start, goal = mountain_passage_6.find_furthest_nodes()
 print("Furthest Nodes: ", start, goal)
-path = mountain_passage_5.astar(start, goal)
+path = mountain_passage_6.astar(start, goal)
 print("Path:", path)
-mountain_passage_5.plot_astar_optimization(start, goal)
-mountain_passage_5.plot_path_astar(path)
+mountain_passage_6.plot_astar_optimization(start, goal)
+mountain_passage_6.plot_path_astar(path)
 
 
 # Notes Below: 
