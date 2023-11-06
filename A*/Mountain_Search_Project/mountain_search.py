@@ -251,6 +251,9 @@ def elevation_func_3(x, y):
 def elevation_func_4(x, y):
     return np.sin(x)*np.cos(y) + (x**2 - y**2)/10 + (np.sin(2*x)*np.cos(2*y))/4
 
+def elevation_func_5(x, y):
+    return 1/50*(x**2 -3*x*(y**2))
+
 def traffic_func():
     return np.random.rand(num_nodes, num_nodes) * 10
 
@@ -259,26 +262,26 @@ def traffic_func():
 num_nodes = 15
 num_connections = 15
 
-x_range = (-np.pi, np.pi)
-y_range = (-np.pi, np.pi)
+# x_range = (-np.pi, np.pi)
+# y_range = (-np.pi, np.pi)
 
-"""Steep Elevation Function"""""
-mountain_passage_1 = MountainPassage(elevation_funct=elevation_func_1, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
-print("Steep Elevation Function:")
-mountain_passage_1.plot(show_meshgrid=True)
-mountain_passage_1.plot(show_meshgrid=False)
-# print(mountain_passage.traffic_weight_matrix)
+# """Steep Elevation Function"""""
+# mountain_passage_1 = MountainPassage(elevation_funct=elevation_func_1, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
+# print("Steep Elevation Function:")
+# mountain_passage_1.plot(show_meshgrid=True)
+# mountain_passage_1.plot(show_meshgrid=False)
+# # print(mountain_passage.traffic_weight_matrix)
 
-traffic_df = pd.DataFrame(mountain_passage_1.traffic_weight_matrix)
-print(traffic_df)
+# traffic_df = pd.DataFrame(mountain_passage_1.traffic_weight_matrix)
+# print(traffic_df)
 
-"""A* Algorithm"""""
-start, goal = mountain_passage_1.find_furthest_nodes()
-print("Furthest Nodes: ", start, goal)
-path = mountain_passage_1.astar(start, goal)
-print("Path:", path)
-mountain_passage_1.plot_astar_optimization(start, goal)
-mountain_passage_1.plot_path_astar(path)
+# """A* Algorithm"""""
+# start, goal = mountain_passage_1.find_furthest_nodes()
+# print("Furthest Nodes: ", start, goal)
+# path = mountain_passage_1.astar(start, goal)
+# print("Path:", path)
+# mountain_passage_1.plot_astar_optimization(start, goal)
+# mountain_passage_1.plot_path_astar(path)
 
 # """Gentle Elevation Function"""""
 # x_range = (-np.pi, np.pi)
@@ -341,3 +344,33 @@ mountain_passage_1.plot_path_astar(path)
 # print("Path:", path)
 # mountain_passage_4.plot_astar_optimization(start, goal)
 # mountain_passage_4.plot_path_astar(path)
+
+# """Elevation Function 4"""
+
+x_range = (-2*np.pi, 2*np.pi)
+y_range = (-2*np.pi, 2*np.pi)
+
+mountain_passage_5 = MountainPassage(elevation_funct=elevation_func_4, traffic_func=traffic_func, num_nodes=num_nodes, num_connections=num_connections, x_range=x_range, y_range=y_range)
+print("Elevation Function with Sine and Cosine Interaction:")
+mountain_passage_5.plot(show_meshgrid=True)
+mountain_passage_5.plot(show_meshgrid=False)
+
+traffic_df = pd.DataFrame(mountain_passage_5.traffic_weight_matrix)
+print(traffic_df)
+
+"""A* Algorithm"""""
+
+start, goal = mountain_passage_5.find_furthest_nodes()
+print("Furthest Nodes: ", start, goal)
+path = mountain_passage_5.astar(start, goal)
+print("Path:", path)
+mountain_passage_5.plot_astar_optimization(start, goal)
+mountain_passage_5.plot_path_astar(path)
+
+
+# Notes Below: 
+# Linear regression model:
+# Response variable: time to convergence, 
+# Predictors : X_1 size of grid, X_2 cost of path
+
+# See relation, might add interactive X_1X_2 of X_i^2   ??

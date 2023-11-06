@@ -112,7 +112,7 @@ def visualize_search_process_3d(graph, start, goal, came_from, explored_nodes):
 G = create_3d_grid_graph(5, 5, 5)
 start, goal = (0, 0, 0), (4, 4, 2) 
 came_from, explored_nodes = a_star_3d(G, start, goal)
-# visualize_search_process_3d(G, start, goal, came_from, explored_nodes)
+visualize_search_process_3d(G, start, goal, came_from, explored_nodes)
 
 G = create_3d_custom_grid_graph(7, 5, 4)  
 start, goal = (1, 2, 0), (6, 4, 1)
