@@ -1,1 +1,4 @@
 
+[submodule "A*/A_star"]
+	path = A*/A_star
+	url = https://github.com/adamkurth/A_star.git
